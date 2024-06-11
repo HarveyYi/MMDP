@@ -1,0 +1,61 @@
+MODEL:
+  NAME: "umeml"
+  FUSION: None
+  SIZE: "small"
+  DROPOUT: 0.25
+  PROJECT_DIM: 256
+  HIDDEN_DIM: 256
+  NUM_CLUSTERS: 10
+  UMEML:
+    PROTOTYPES: 5
+    REGISTERS: 3
+    ALPHA: 5.0
+  
+DATASET:
+  TYPE: "Survival"
+  SURVIVAL_ENDPOINT: "DSS" # "OS":survival_months or "PFI":survival_months_pfi or "DSS": survival_months_dss
+  MODALITY: "pathology"
+  PATH:
+    FEATURE: "conch"
+    SAMPLE: False
+    NUM: 4096
+    DIM: 512
+  OMIC:
+    TYPE: "all"  # "group" or "pathway" or "all"
+    PATHWAY: "combine"  # "combine" or "hallmarks" or "xena"
+    DIM: 4999
+  
+TASK:
+  NAME: "Survival" # 1. Survival 
+  LOSS: "nllsurvloss"
+
+DATALOADER:
+  TRAIN:
+    BATCH_SIZE: 1
+  TEST:
+    BATCH_SIZE: 1
+  NUM_WORKERS: 8
+
+LOSS:
+  ALPHA : 0.5
+  REDUCTION: "mean"  # sum or mean
+
+OPTIM:
+  NAME: "adam"
+  LR: 2e-4
+  WEIGHT_DECAY: 1e-4
+  STEPSIZE: [4000]
+  MAX_EPOCH: 10
+  ADAM_BETA1: 0.9
+  ADAM_BETA2: 0.999
+  MOMENTUM: 0.9
+  LR_SCHEDULER: "cosine"
+  WARMUP_EPOCH: 1
+  WARMUP_TYPE: "linear"
+  WARMUP_CONS_LR: 1e-5
+
+TRAIN:
+  PRINT_FREQ: 100
+
+TRAINER:
+  PREC: "fp32"
