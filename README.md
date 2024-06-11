@@ -44,7 +44,7 @@ conda install pytorch==1.13.0 torchvision==0.14.0 torchaudio==0.13.0 pytorch-cud
 c. Install this library 
 ```bash
 # Enter the folder
-cd MMSP/
+cd MMDP/
 
 # Install dependencies
 pip install -r requirements.txt
