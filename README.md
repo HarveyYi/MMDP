@@ -29,10 +29,10 @@ a. Create a conda virtual environment and activate it.
 
 ```bash
 # Create a conda environment
-conda create -n mmsp python=3.10
+conda create -n mmdp python=3.10
 
 # Activate the environment
-conda activate mmsp
+conda activate mmdp
 ```
 
 b. Install PyTorch and torchvision following the [official instructions](https://pytorch.org/), e.g.,
@@ -40,15 +40,8 @@ b. Install PyTorch and torchvision following the [official instructions](https:/
 ```shell
 # CUDA 11.7
 conda install pytorch==1.13.0 torchvision==0.14.0 torchaudio==0.13.0 pytorch-cuda=11.7 -c pytorch -c nvidia
-```
-c. install scgpt
-```bash
-pip install flash-attn==1.0.1 --no-build-isolation
-conda install r-base r-devtools
-pip install --no-deps scgpt
-```
 
-d. Install this library 
+c. Install this library 
 ```bash
 # Enter the folder
 cd MMSP/
